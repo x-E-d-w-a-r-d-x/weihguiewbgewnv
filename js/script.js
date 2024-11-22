@@ -38,6 +38,12 @@ const games = [
         description: 'Tetris but with physics!',
         thumbnail: 'games/Sandtris/thumbnail.png',
         link: 'games/Sandtris/index.html'
+    },
+    {
+        title: 'House Of Hazards',
+        description: 'Dodge your freinds or npcs as you complete tasks to win the game!',
+        thumbnail: 'games/HouseOfHazards/thumbnail.png',
+        link: 'games/HouseOfHazards/index.html'
     }
 ];
 
