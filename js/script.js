@@ -25,7 +25,13 @@ const games = [
         description: 'A ide game where your goal is to break blocks that spawn in.',
         thumbnail: 'games/IdleBreakout/img/thumbnail.png',
         link: 'games/IdleBreakout/index.html'
-    }
+    },
+    {
+        title: 'Sandtris',
+        description: 'Tetris but with physics',
+        thumbnail: 'games/Sandtris/thumbnail.png',
+        link: 'games/Sandtris/index.html'
+    },
 ];
 
 // Render games dynamically
