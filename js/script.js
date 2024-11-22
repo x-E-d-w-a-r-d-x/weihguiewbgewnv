@@ -63,6 +63,12 @@ const games = [
         thumbnail: 'games/SoccerRandom/thumbnail.png',
         link: 'games/SoccerRandom/index.html'
     },
+    {
+        title: 'Retro Bowl',
+        description: 'Play some foot bowl with your favorite teams!',
+        thumbnail: 'games/RetroBowl/thumbnail.png',
+        link: 'games/RetroBowl/index.html'
+    },
 ];
 
 // Render games dynamically
