@@ -9,7 +9,7 @@ const games = [
         description: 'Control the ball down the slope for as long as posible.',
         thumbnail: 'games/Slope/slope4.jpeg', // Add thumbnails to each game's folder
         link: 'games/Slope/index.html'
-    }
+    },
 ];
 
 // Render games dynamically
@@ -32,13 +32,21 @@ function renderGames(filter = '') {
 
 // Dark Mode Toggle
 themeToggle.addEventListener('click', () => {
-    const currentTheme = document.body.dataset.theme;
-    document.body.dataset.theme = currentTheme === 'dark' ? 'light' : 'dark';
+    const isDark = document.body.dataset.theme === 'dark';
+    document.body.dataset.theme = isDark ? 'light' : 'dark';
+    localStorage.setItem('theme', isDark ? 'light' : 'dark'); // Save preference
 });
+
+// Load saved theme on page load
+window.onload = () => {
+    const savedTheme = localStorage.getItem('theme') || 'light';
+    document.body.dataset.theme = savedTheme;
+};
 
 // Search Functionality
 gameSearch.addEventListener('input', (e) => {
-    renderGames(e.target.value);
+    const searchTerm = e.target.value.trim().toLowerCase();
+    renderGames(searchTerm);
 });
 
 // Back to Top Button Logic
