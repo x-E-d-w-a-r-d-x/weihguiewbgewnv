@@ -51,6 +51,18 @@ const games = [
         thumbnail: 'games/RooftopSnipers/thumbnail.png',
         link: 'games/RooftopSnipers/index.html'
     },
+    {
+        title: 'Basket Random',
+        description: 'Play some basket ball and shoot at some hoops.',
+        thumbnail: 'games/BasketRandom/thumbnail.png',
+        link: 'games/BasketRandom/index.html'
+    },
+    {
+        title: 'Soccer Random',
+        description: 'Play some soccer and score some goals!',
+        thumbnail: 'games/SoccerRandom/thumbnail.png',
+        link: 'games/SoccerRandom/index.html'
+    },
 ];
 
 // Render games dynamically
