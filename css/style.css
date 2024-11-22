@@ -1,17 +1,31 @@
 /* General Styles */
 body {
-    font-family: Arial, sans-serif;
+    font-family: 'Roboto', Arial, sans-serif;
     margin: 0;
     padding: 0;
-    background-color: #f4f4f9;
+    background: linear-gradient(180deg, #e3f2fd, #f4f4f9);
     color: #333;
 }
 
 header {
     background: #4CAF50;
     color: white;
-    padding: 20px;
+    padding: 30px 20px;
     text-align: center;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+header h1 {
+    margin: 0;
+    font-size: 2.5rem;
+}
+
+header p {
+    font-size: 1.2rem;
+    margin-top: 5px;
 }
 
 main {
@@ -30,27 +44,74 @@ main {
 
 .game-item {
     background: white;
-    border: 1px solid #ddd;
-    border-radius: 8px;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     text-align: center;
     padding: 15px;
-    transition: transform 0.2s;
+    transition: transform 0.3s, box-shadow 0.3s;
+    overflow: hidden;
 }
 
 .game-item:hover {
     transform: scale(1.05);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
 }
 
 .game-item img {
     max-width: 100%;
     height: auto;
-    border-radius: 5px;
+    border-radius: 8px;
+    margin-bottom: 15px;
+}
+
+.game-item h3 {
+    font-size: 1.4rem;
+    color: #333;
+    margin-bottom: 10px;
+}
+
+.game-item p {
+    font-size: 0.95rem;
+    color: #666;
+    margin-bottom: 10px;
 }
 
 footer {
     text-align: center;
-    padding: 10px;
+    padding: 20px;
     background: #333;
     color: white;
+    font-size: 0.9rem;
+    position: relative;
+    margin-top: 20px;
+}
+
+footer a {
+    color: #4CAF50;
+    text-decoration: none;
+}
+
+footer a:hover {
+    text-decoration: underline;
+}
+
+/* Back to Top Button */
+#back-to-top {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    font-size: 1.5rem;
+    cursor: pointer;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    display: none;
+}
+
+#back-to-top:hover {
+    background: #45A049;
 }
