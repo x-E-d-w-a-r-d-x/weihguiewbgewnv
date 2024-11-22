@@ -43,9 +43,7 @@ const games = [
 
 // Render games dynamically
 function renderGames() {
-    if (!gamesList) return;
-
-    gamesList.innerHTML = ''; // Clear existing content
+    gamesList.innerHTML = '';
     games.forEach(game => {
         const gameItem = document.createElement('div');
         gameItem.classList.add('game-item');
@@ -61,4 +59,3 @@ function renderGames() {
 
 // Initial Render
 renderGames();
-console.log('Games rendered successfully.');

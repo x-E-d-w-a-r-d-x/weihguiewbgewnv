@@ -1,84 +1,91 @@
-/* Global Styles */
+/* General Styles */
 body {
-    font-family: Arial, sans-serif;
+    font-family: 'Nunito', Arial, sans-serif;
     margin: 0;
     padding: 0;
-    background: #f4f4f4;
+    background: #f4f4f9;
     color: #333;
-    text-align: center;
 }
 
-/* Header */
 header {
     background: #4CAF50;
     color: white;
-    padding: 1em 0;
+    padding: 30px 20px;
+    text-align: center;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
 }
 
 header h1 {
     margin: 0;
+    font-size: 2.5rem;
 }
 
 header p {
-    margin: 0.5em 0 0;
+    font-size: 1.2rem;
+    margin-top: 5px;
 }
 
-/* Games List */
 .games-list {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    margin: 2em auto;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 20px;
     max-width: 1200px;
-    gap: 1em;
+    margin: 20px auto;
+    padding: 0 10px;
 }
 
-.game-item {
+.games-list .game-item {
     background: white;
     border: 1px solid #ddd;
     border-radius: 8px;
-    width: 200px;
-    padding: 1em;
+    padding: 15px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
     text-align: center;
+    transition: transform 0.2s;
 }
 
-.game-item img {
-    width: 100%;
-    height: auto;
-    border-radius: 8px;
+.games-list .game-item:hover {
+    transform: scale(1.05);
 }
 
-.game-item h3 {
-    font-size: 1.2em;
-    margin: 0.5em 0;
+.games-list img {
+    max-width: 100%;
+    border-radius: 5px;
+    margin-bottom: 10px;
 }
 
-.game-item p {
-    font-size: 0.9em;
+.games-list h3 {
+    font-size: 1.2rem;
+    margin: 10px 0;
+}
+
+.games-list p {
+    font-size: 0.9rem;
     color: #666;
 }
 
-.game-item a {
+.games-list a {
     display: inline-block;
-    margin-top: 0.5em;
-    padding: 0.5em 1em;
+    margin-top: 10px;
+    padding: 8px 12px;
     background: #4CAF50;
     color: white;
     text-decoration: none;
-    border-radius: 4px;
-    transition: background 0.3s;
+    border-radius: 5px;
+    font-weight: bold;
 }
 
-.game-item a:hover {
-    background: #45a049;
+.games-list a:hover {
+    background: #45A049;
 }
 
-/* Footer */
 footer {
-    margin-top: 2em;
-    padding: 1em 0;
+    text-align: center;
+    padding: 20px;
     background: #333;
     color: white;
-    font-size: 0.9em;
+    margin-top: 20px;
 }
