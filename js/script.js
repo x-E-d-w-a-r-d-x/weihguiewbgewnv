@@ -45,6 +45,12 @@ const games = [
         thumbnail: 'games/HouseOfHazards/thumbnail.png',
         link: 'games/HouseOfHazards/index.html'
     },
+    {
+        title: 'Rooftop Snipers',
+        description: 'Shoo the other person to win.',
+        thumbnail: 'games/RooftopSnipers/thumbnail.png',
+        link: 'games/RooftopSnipers/index.html'
+    },
 ];
 
 // Render games dynamically
