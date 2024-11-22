@@ -5,7 +5,7 @@ const games = [
     {
         title: 'Slope',
         description: 'Roll and dodge obstacles!',
-        thumbnail: 'games/Slope/slope4.jpeg',
+        thumbnail: 'games/Slope/thumbnail.png',
         link: 'games/Slope/index.html'
     },
     {

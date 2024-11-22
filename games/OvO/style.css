@@ -1,0 +1,92 @@
+@import url("https://fonts.googleapis.com/css2?family=Ubuntu&display=swap");
+
+head {
+    width: 0%;
+    height: 0%;
+}
+
+html, body {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    width: 100%;
+}
+
+body {
+    font-family: 'Ubuntu', Verdana, sans-serif;
+}
+
+a {
+    color: grey;
+}
+
+a:visited {
+    color: grey;
+}
+
+a:active {
+    color: lightgrey;
+}
+
+.navbar-special-ukraine {
+    background: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)), url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAxMjAwIDgwMCI+DQo8cGF0aCBmaWxsPSIjM2E3NWM0IiBkPSJtMCwwaDEyMDB2ODAwaC0xMjAweiIvPg0KPHBhdGggZmlsbD0iI2Y5ZGQxNiIgZD0ibTAsNDAwaDEyMDB2NDAwaC0xMjAweiIvPg0KPC9zdmc+DQo=');
+    padding-right: 20px;
+}
+
+.list-group-item-action, .clickable-link, .clickable-copy {
+    cursor: pointer;
+}
+
+.hover-pulse-animation {
+    animation: pulse 500ms ease-in-out 0s 1 normal forwards;
+}
+
+.ovo {
+    animation: wiggle 30s ease-in-out 0s infinite normal forwards;
+}
+
+@keyframes pulse {
+  0% {
+    transform: scale(1);
+  }
+
+  50% {
+    transform: scale(1.015);
+  }
+
+  100% {
+    transform: scale(1);
+  }
+}
+
+@keyframes wiggle {
+  0%,
+  100% {
+    transform: rotate(0deg);
+    transform-origin: 50% 50%;
+  }
+
+  10% {
+    transform: rotate(8deg);
+  }
+
+  20%,
+  40%,
+  60% {
+    transform: rotate(-10deg);
+  }
+
+  30%,
+  50%,
+  70% {
+    transform: rotate(10deg);
+  }
+
+  80% {
+    transform: rotate(-8deg);
+  }
+
+  90% {
+    transform: rotate(8deg);
+  }
+}
