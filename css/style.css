@@ -1,107 +1,84 @@
-/* General Reset */
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
-
-/* Body and Layout */
+/* Global Styles */
 body {
     font-family: Arial, sans-serif;
-    background-color: #f4f4f4;
+    margin: 0;
+    padding: 0;
+    background: #f4f4f4;
     color: #333;
-    display: flex;
-    flex-direction: column;
-    min-height: 100vh;
+    text-align: center;
 }
 
 /* Header */
 header {
-    text-align: center;
-    background-color: #0073e6;
-    color: #fff;
-    padding: 20px 10px;
+    background: #4CAF50;
+    color: white;
+    padding: 1em 0;
 }
 
 header h1 {
-    font-size: 2.5rem;
+    margin: 0;
 }
 
 header p {
-    font-size: 1rem;
-    margin-top: 5px;
+    margin: 0.5em 0 0;
 }
 
-/* Main Content */
-main {
-    flex: 1;
-    padding: 20px;
-    max-width: 1200px;
-    margin: 0 auto;
-}
-
+/* Games List */
 .games-list {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    gap: 20px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin: 2em auto;
+    max-width: 1200px;
+    gap: 1em;
 }
 
-/* Game Items */
 .game-item {
-    background: #fff;
+    background: white;
     border: 1px solid #ddd;
     border-radius: 8px;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    overflow: hidden;
-    transition: transform 0.3s, box-shadow 0.3s;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-}
-
-.game-item:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 6px 10px rgba(0, 0, 0, 0.2);
+    width: 200px;
+    padding: 1em;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    text-align: center;
 }
 
 .game-item img {
     width: 100%;
     height: auto;
-    border-bottom: 1px solid #ddd;
+    border-radius: 8px;
 }
 
 .game-item h3 {
-    font-size: 1.25rem;
-    margin: 10px 0;
+    font-size: 1.2em;
+    margin: 0.5em 0;
 }
 
 .game-item p {
-    font-size: 0.9rem;
-    color: #555;
-    margin: 0 10px 10px;
-    text-align: center;
+    font-size: 0.9em;
+    color: #666;
 }
 
 .game-item a {
     display: inline-block;
-    margin: 10px;
-    padding: 10px 15px;
-    background-color: #0073e6;
-    color: #fff;
+    margin-top: 0.5em;
+    padding: 0.5em 1em;
+    background: #4CAF50;
+    color: white;
     text-decoration: none;
     border-radius: 4px;
-    transition: background-color 0.3s;
+    transition: background 0.3s;
 }
 
 .game-item a:hover {
-    background-color: #005bb5;
+    background: #45a049;
 }
 
 /* Footer */
 footer {
-    text-align: center;
+    margin-top: 2em;
+    padding: 1em 0;
     background: #333;
-    color: #fff;
-    padding: 10px;
-    font-size: 0.8rem;
+    color: white;
+    font-size: 0.9em;
 }

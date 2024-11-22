@@ -1,5 +1,12 @@
 const gamesList = document.querySelector('.games-list');
 
+// Debug: Check if the games-list exists
+if (!gamesList) {
+    console.error('Error: .games-list element not found!');
+} else {
+    console.log('.games-list element found successfully.');
+}
+
 // List of games
 const games = [
     {
@@ -36,7 +43,9 @@ const games = [
 
 // Render games dynamically
 function renderGames() {
-    gamesList.innerHTML = '';
+    if (!gamesList) return;
+
+    gamesList.innerHTML = ''; // Clear existing content
     games.forEach(game => {
         const gameItem = document.createElement('div');
         gameItem.classList.add('game-item');
@@ -52,3 +61,4 @@ function renderGames() {
 
 // Initial Render
 renderGames();
+console.log('Games rendered successfully.');
