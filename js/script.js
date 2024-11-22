@@ -26,6 +26,7 @@ const games = [
 function renderGames() {
     gamesList.innerHTML = '';
     games.forEach(game => {
+        console.log('Rendering game:', game); // Debug log
         const gameItem = document.createElement('div');
         gameItem.classList.add('game-item');
         gameItem.innerHTML = `
