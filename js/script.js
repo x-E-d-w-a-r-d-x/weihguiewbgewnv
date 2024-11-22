@@ -10,7 +10,7 @@ const games = [
     },
     {
         title: 'OvO',
-        description: 'Try and beat this imposible game!',
+        description: 'Try and beat this impossible game!',
         thumbnail: 'games/OvO/thumbnail.png',
         link: 'games/OvO/index.html'
     },
@@ -22,23 +22,22 @@ const games = [
     },
     {
         title: 'Idle Breakout',
-        description: 'A ide game where your goal is to break blocks that spawn in.',
+        description: 'An idle game where your goal is to break blocks that spawn in.',
         thumbnail: 'games/IdleBreakout/img/thumbnail.png',
         link: 'games/IdleBreakout/index.html'
     },
     {
         title: 'Sandtris',
-        description: 'Tetris but with physics',
+        description: 'Tetris but with physics!',
         thumbnail: 'games/Sandtris/thumbnail.png',
         link: 'games/Sandtris/index.html'
-    },
+    }
 ];
 
 // Render games dynamically
 function renderGames() {
     gamesList.innerHTML = '';
     games.forEach(game => {
-        console.log('Rendering game:', game); // Debug log
         const gameItem = document.createElement('div');
         gameItem.classList.add('game-item');
         gameItem.innerHTML = `
