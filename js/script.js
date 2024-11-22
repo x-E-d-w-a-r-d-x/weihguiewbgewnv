@@ -19,6 +19,12 @@ const games = [
         description: 'Fun game about motorcycles',
         thumbnail: 'games/MotoX3M/moto-x3m.png',
         link: 'games/MotoX3M/index.html'
+    },
+    {
+        title: 'Run 3',
+        description: 'Run in space avoiding deadly obstacles',
+        thumbnail: 'games/Run3/thumbnail.png',
+        link: 'games/Run3/index.html'
     }
 ];
 
