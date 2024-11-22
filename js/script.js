@@ -21,10 +21,10 @@ const games = [
         link: 'games/MotoX3M/index.html'
     },
     {
-        title: 'Run 3',
-        description: 'Run in space avoiding deadly obstacles',
-        thumbnail: 'games/Run3/thumbnail.png',
-        link: 'games/Run3/index.html'
+        title: 'Idle Breakout',
+        description: 'A ide game where your goal is to break blocks that spawn in.',
+        thumbnail: 'games/IdleBreakout/img/thumbnail.png',
+        link: 'games/IdleBreakout/index.html'
     }
 ];
 
