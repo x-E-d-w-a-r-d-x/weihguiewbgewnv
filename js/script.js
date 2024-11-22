@@ -47,7 +47,7 @@ const games = [
     },
     {
         title: 'Rooftop Snipers',
-        description: 'Shoo the other person to win.',
+        description: 'Shoot the other person to win.',
         thumbnail: 'games/RooftopSnipers/thumbnail.png',
         link: 'games/RooftopSnipers/index.html'
     },
