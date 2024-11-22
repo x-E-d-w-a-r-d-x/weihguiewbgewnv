@@ -13,6 +13,12 @@ const games = [
         description: 'Try and beat this imposible game!',
         thumbnail: 'games/OvO/thumbnail.png',
         link: 'games/OvO/index.html'
+    },
+    {
+        title: 'Moto X3M',
+        description: 'Fun game about motorcycles',
+        thumbnail: 'games/MotoX3M/moto-x3m.png',
+        link: 'games/MotoX3M/index.html'
     }
 ];
 
