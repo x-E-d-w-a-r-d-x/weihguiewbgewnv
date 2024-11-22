@@ -44,7 +44,7 @@ const games = [
         description: 'Dodge your freinds or npcs as you complete tasks to win the game!',
         thumbnail: 'games/HouseOfHazards/thumbnail.png',
         link: 'games/HouseOfHazards/index.html'
-    }
+    },
 ];
 
 // Render games dynamically
