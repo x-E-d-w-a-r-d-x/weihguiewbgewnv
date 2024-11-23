@@ -5,7 +5,6 @@ const searchButton = document.getElementById('searchButton');
 const clearSearchButton = document.getElementById('clearSearchButton');
 
 // List of games (keep your game list as is)
-
 const games = [
     {
         title: 'Slope',
