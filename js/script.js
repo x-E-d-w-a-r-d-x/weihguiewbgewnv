@@ -73,16 +73,16 @@ const games = [
         link: 'games/CookieClicker/index.html'
     },
     {
-        title: 'Fruit Ninja',
-        description: 'Slice and dice some food!',
-        thumbnail: 'games/FruitNinja/thumbnail.png',
-        link: 'games/FruitNinja/index.html'
+        title: 'Boxing Random',
+        description: 'Fight your way up teh ranks or fight your freinds in boxing random!',
+        thumbnail: 'games/BoxingRandom/thumbnail.png',
+        link: 'games/BoxingRandom/index.html'
     },
     {
-        title: 'Flappy Bird',
-        description: 'Fly though the pipes and get to score 99 to win.',
-        thumbnail: 'games/FlappyBird/thumbnail.png',
-        link: 'games/FlappyBird/index.html'
+        title: 'Volley Random',
+        description: 'Chalange your freinds or famaly to a fun game of volleyball.',
+        thumbnail: 'games/VolleyRandom/thumbnail.png',
+        link: 'games/VolleyRandom/index.html'
     }
 ];
 
