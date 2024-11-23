@@ -18,21 +18,23 @@ body {
 }
 
 #searchInput {
-    padding: 10px;
-    font-size: 14px;
-    border: 2px solid #ccc;
-    border-radius: 5px;
+    padding: 8px;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
     margin-right: 10px;
     width: 250px;
+    box-sizing: border-box;
 }
 
 #searchButton, #clearSearchButton {
-    padding: 10px 20px;
+    padding: 8px 16px;
     font-size: 14px;
     cursor: pointer;
     border: none;
-    border-radius: 5px;
+    border-radius: 4px;
     margin-left: 10px;
+    transition: background-color 0.3s;
 }
 
 #searchButton {
@@ -62,19 +64,24 @@ body {
     padding: 20px;
     width: 100%;
     max-width: 1200px;
+    box-sizing: border-box;
 }
 
 /* Game item styling */
 .game-item {
     background-color: #fff;
-    border: 2px solid #ccc;
-    border-radius: 10px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
     overflow: hidden;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    transition: transform 0.2s;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease-in-out;
     text-align: center;
-    padding: 20px;
+    padding: 16px;
     cursor: pointer;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
 }
 
 .game-item:hover {
@@ -85,7 +92,8 @@ body {
 .game-item img {
     width: 100%;
     height: auto;
-    border-radius: 10px;
+    border-radius: 8px;
+    object-fit: cover;
 }
 
 /* Game title and description */
@@ -103,14 +111,15 @@ body {
 
 /* Play now button */
 .game-item a {
-    padding: 10px 20px;
+    padding: 8px 16px;
     font-size: 14px;
     background-color: #007BFF;
     color: white;
-    border-radius: 5px;
+    border-radius: 4px;
     text-decoration: none;
     display: inline-block;
     margin-top: 10px;
+    transition: background-color 0.3s ease-in-out;
 }
 
 .game-item a:hover {
