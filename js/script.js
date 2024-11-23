@@ -1,4 +1,7 @@
 const gamesList = document.querySelector('.games-list');
+// Search Functionality
+const searchInput = document.getElementById('searchInput');
+const searchButton = document.getElementById('searchButton');
 
 // Debug: Check if the games-list exists
 if (!gamesList) {
@@ -77,10 +80,10 @@ const games = [
     },
 ];
 
-// Render games dynamically
-function renderGames() {
+// Update renderGames to accept a game list parameter
+function renderGames(gameList = games) {
     gamesList.innerHTML = '';
-    games.forEach(game => {
+    gameList.forEach(game => {
         const gameItem = document.createElement('div');
         gameItem.classList.add('game-item');
         gameItem.innerHTML = `
@@ -92,6 +95,25 @@ function renderGames() {
         gamesList.appendChild(gameItem);
     });
 }
+
+// Filter games by search term
+function searchGames() {
+    const searchTerm = searchInput.value.toLowerCase();
+    const filteredGames = games.filter(game =>
+        game.title.toLowerCase().includes(searchTerm) || game.description.toLowerCase().includes(searchTerm)
+    );
+
+    // Render only the filtered games
+    renderGames(filteredGames);
+}
+
+// Add event listener for search
+searchButton.addEventListener('click', searchGames);
+searchInput.addEventListener('keyup', (event) => {
+    if (event.key === 'Enter') {
+        searchGames();
+    }
+});
 
 // Initial Render
 renderGames();
