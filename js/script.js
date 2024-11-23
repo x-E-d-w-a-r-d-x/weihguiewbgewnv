@@ -74,7 +74,6 @@ const games = [
     }
 ];
 
-// Render games dynamically
 function renderGames(gameList = games) {
     gamesList.innerHTML = ''; // Clear the game list
 
@@ -90,7 +89,7 @@ function renderGames(gameList = games) {
             <img src="${game.thumbnail}" alt="${game.title} Thumbnail" loading="lazy">
             <h3>${game.title}</h3>
             <p>${game.description}</p>
-            <a href="${game.link}" target="_blank">Play Now</a>
+            <a href="${game.link}" target="_blank">Learn More</a>
         `;
         gamesList.appendChild(gameItem);
     });
@@ -129,22 +128,6 @@ searchInput.addEventListener('keyup', (event) => {
 document.getElementById('sortByTitle').addEventListener('click', () => {
     const sortedGames = [...games].sort((a, b) => a.title.localeCompare(b.title));
     renderGames(sortedGames);
-});
-
-// Add to game item
-const isFavorited = localStorage.getItem(game.title) ? '❤️' : '🤍';
-gameItem.innerHTML += `<button class="favorite-button">${isFavorited}</button>`;
-
-// Toggle favorite
-document.querySelector('.favorite-button').addEventListener('click', (e) => {
-    const gameTitle = e.target.parentElement.querySelector('h3').textContent;
-    if (localStorage.getItem(gameTitle)) {
-        localStorage.removeItem(gameTitle);
-        e.target.textContent = '🤍';
-    } else {
-        localStorage.setItem(gameTitle, 'true');
-        e.target.textContent = '❤️';
-    }
 });
 
 // Clear search when the "Clear" button is clicked
