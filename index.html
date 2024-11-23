@@ -3,33 +3,34 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Greenhoh1's Game Hosting</title>
-    <link rel="stylesheet" href="css/style.css">
-    <link rel="icon" href="favicon.ico" type="image/x-icon">
-    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">
+    <title>Game Hosting</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
     <header>
-        <div class="header-content">
-            <h1>Greenhoh1's Game Hosting</h1>
-            <p>Explore and play amazing games directly in your browser!</p>
+        <h1>Greenhoh1's Game Hosting</h1>
+        <p>Play awesome games directly in your browser!</p>
+    </header>
+
+    <div class="grid-container">
+        <div class="grid-item">
+            <img src="game1-thumbnail.jpg" alt="Game 1">
+            <h3>Game 1</h3>
+            <p>An exciting puzzle game!</p>
+            <button>Play Now</button>
         </div>
-        <div class="search-container">
-            <input type="text" id="searchInput" placeholder="Search for games..." />
-            <button id="searchButton">Search</button>
-            <button id="clearSearchButton">Clear</button>
-        </div>               
-    </header>    
-    <main>
-        
-        <div class="games-list">
-            <!-- Games will be dynamically listed here -->
-        </div> 
-        
-    </main>
+        <div class="grid-item">
+            <img src="game2-thumbnail.jpg" alt="Game 2">
+            <h3>Game 2</h3>
+            <p>A thrilling adventure game!</p>
+            <button>Play Now</button>
+        </div>
+        <!-- Add more games as needed -->
+    </div>
+
     <footer>
-        <p>&copy; 2024 Greenhoh1's Game Hosting | Built with ❤️ and GitHub Pages</p>
+        <p>&copy; 2024 Greenhoh1. All rights reserved. <a href="#contact">Contact Us</a></p>
     </footer>
-    <script src="js/script.js"></script>
 </body>
 </html>

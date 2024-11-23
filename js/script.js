@@ -74,6 +74,7 @@ const games = [
     }
 ];
 
+// Render games dynamically
 function renderGames(gameList = games) {
     gamesList.innerHTML = ''; // Clear the game list
 
@@ -89,7 +90,7 @@ function renderGames(gameList = games) {
             <img src="${game.thumbnail}" alt="${game.title} Thumbnail" loading="lazy">
             <h3>${game.title}</h3>
             <p>${game.description}</p>
-            <a href="${game.link}" target="_blank">Learn More</a>
+            <a href="${game.link}" target="_blank">Play Now</a>
         `;
         gamesList.appendChild(gameItem);
     });
