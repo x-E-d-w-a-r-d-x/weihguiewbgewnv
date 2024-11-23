@@ -3,31 +3,35 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Greenhoh1's Game Hosting</title>
-    <link rel="stylesheet" href="css/style.css">
-    <link rel="icon" href="favicon.ico" type="image/x-icon">
-    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">
+    <title>Game Library</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <header>
-        <h1>Greenhoh1's Game Hosting</h1>
-        <p>Explore and play amazing games directly in your browser!</p>
-        <div class="search-container">
-            <input type="text" id="searchInput" placeholder="Search for games..." />
-            <button id="searchButton">Search</button>
-            <button id="clearSearchButton">Clear</button>
-        </div>               
-    </header>    
-    <main>
-        
-        <div class="games-list">
-            <!-- Games will be dynamically listed here -->
-        </div>        
-        
-    </main>
-    <footer>
-        <p>&copy; 2024 Greenhoh1's Game Hosting | Built with ❤️ and GitHub Pages</p>
-    </footer>
-    <script src="js/script.js"></script>
+    <!-- Category Dropdown -->
+    <div class="category-container">
+        <label for="categorySelect">Filter by Category:</label>
+        <select id="categorySelect" class="category-select">
+            <option value="all">All</option>
+            <option value="arcade">Arcade</option>
+            <option value="puzzle">Puzzle</option>
+            <option value="racing">Racing</option>
+            <option value="sports">Sports</option>
+            <option value="idle">Idle</option>
+        </select>
+    </div>
+
+    <!-- Search Bar -->
+    <div class="search-container">
+        <input type="text" id="searchInput" placeholder="Search for a game...">
+        <button id="searchButton">Search</button>
+        <button id="clearSearchButton">Clear</button>
+    </div>
+
+    <!-- Game Items List -->
+    <div class="games-list" id="gamesList">
+        <!-- Game items will be injected here by JavaScript -->
+    </div>
+
+    <script src="script.js"></script>
 </body>
 </html>

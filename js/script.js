@@ -1,133 +1,146 @@
-// Grab the required DOM elements
-const gamesList = document.querySelector('.games-list');
-const searchInput = document.getElementById('searchInput');
-const searchButton = document.getElementById('searchButton');
-const clearSearchButton = document.getElementById('clearSearchButton');
-
-// List of games (keep your game list as is)
+// List of games with categories
 const games = [
     {
         title: 'Slope',
         description: 'Roll and dodge obstacles!',
         thumbnail: 'games/Slope/thumbnail.png',
-        link: 'games/Slope/index.html'
+        link: 'games/Slope/index.html',
+        category: 'arcade'
     },
     {
         title: 'OvO',
         description: 'Try and beat this impossible game!',
         thumbnail: 'games/OvO/thumbnail.png',
-        link: 'games/OvO/index.html'
+        link: 'games/OvO/index.html',
+        category: 'puzzle'
     },
     {
         title: 'Moto X3M',
         description: 'Fun game about motorcycles',
         thumbnail: 'games/MotoX3M/moto-x3m.png',
-        link: 'games/MotoX3M/index.html'
+        link: 'games/MotoX3M/index.html',
+        category: 'racing'
     },
     {
         title: 'Idle Breakout',
         description: 'An idle game where your goal is to break blocks that spawn in.',
         thumbnail: 'games/IdleBreakout/img/thumbnail.png',
-        link: 'games/IdleBreakout/index.html'
+        link: 'games/IdleBreakout/index.html',
+        category: 'idle'
     },
     {
         title: 'Sandtris',
         description: 'Tetris but with physics!',
         thumbnail: 'games/Sandtris/thumbnail.png',
-        link: 'games/Sandtris/index.html'
+        link: 'games/Sandtris/index.html',
+        category: 'puzzle'
     },
     {
         title: 'House Of Hazards',
-        description: 'Dodge your friends or npcs as you complete tasks to win the game!',
+        description: 'Dodge your friends or NPCs as you complete tasks to win the game!',
         thumbnail: 'games/HouseOfHazards/thumbnail.png',
-        link: 'games/HouseOfHazards/index.html'
+        link: 'games/HouseOfHazards/index.html',
+        category: 'arcade'
     },
     {
         title: 'Rooftop Snipers',
         description: 'Shoot the other person to win.',
         thumbnail: 'games/RooftopSnipers/thumbnail.png',
-        link: 'games/RooftopSnipers/index.html'
+        link: 'games/RooftopSnipers/index.html',
+        category: 'arcade'
     },
     {
         title: 'Basket Random',
         description: 'Play some basketball and shoot at some hoops.',
         thumbnail: 'games/BasketRandom/thumbnail.png',
-        link: 'games/BasketRandom/index.html'
+        link: 'games/BasketRandom/index.html',
+        category: 'sports'
     },
     {
         title: 'Soccer Random',
         description: 'Play some soccer and score some goals!',
         thumbnail: 'games/SoccerRandom/thumbnail.png',
-        link: 'games/SoccerRandom/index.html'
+        link: 'games/SoccerRandom/index.html',
+        category: 'sports'
     },
     {
         title: 'Retro Bowl',
-        description: 'Play some football with your favorite teams!',
+        description: 'Play some foot bowl with your favorite teams!',
         thumbnail: 'games/RetroBowl/thumbnail.png',
-        link: 'games/RetroBowl/index.html'
+        link: 'games/RetroBowl/index.html',
+        category: 'sports'
     },
     {
         title: 'Cookie Clicker',
         description: 'Start clicking that cookie and take over the world!',
         thumbnail: 'games/CookieClicker/thumbnail.png',
-        link: 'games/CookieClicker/index.html'
+        link: 'games/CookieClicker/index.html',
+        category: 'idle'
     }
 ];
 
-// Render games dynamically
-function renderGames(gameList = games) {
-    gamesList.innerHTML = ''; // Clear the game list
+// Function to display the games based on selected category and search query
+function displayGames(filteredGames) {
+    const gamesList = document.getElementById('gamesList');
+    gamesList.innerHTML = ''; // Clear the current list
 
-    if (gameList.length === 0) {
-        gamesList.innerHTML = '<div class="no-results-message">No results found.</div>';
-        return;
-    }
+    filteredGames.forEach(game => {
+        const gameElement = document.createElement('div');
+        gameElement.classList.add('game-item');
 
-    gameList.forEach(game => {
-        const gameItem = document.createElement('div');
-        gameItem.classList.add('game-item');
-        gameItem.innerHTML = `
-            <img src="${game.thumbnail}" alt="${game.title} Thumbnail" loading="lazy">
+        gameElement.innerHTML = `
+            <img src="${game.thumbnail}" alt="${game.title}">
             <h3>${game.title}</h3>
             <p>${game.description}</p>
-            <a href="${game.link}" target="_blank">Play Now</a>
+            <a href="${game.link}">Play Now</a>
         `;
-        gamesList.appendChild(gameItem);
+
+        gamesList.appendChild(gameElement);
     });
+
+    // Show "No results" if no games are found
+    if (filteredGames.length === 0) {
+        const noResultsMessage = document.createElement('div');
+        noResultsMessage.classList.add('no-results-message');
+        noResultsMessage.textContent = 'No games found.';
+        gamesList.appendChild(noResultsMessage);
+    }
 }
 
 // Search functionality
-function searchGames() {
-    const searchTerm = searchInput.value.trim().toLowerCase();
+document.getElementById('searchButton').addEventListener('click', () => {
+    const query = document.getElementById('searchInput').value.toLowerCase();
+    const category = document.getElementById('categorySelect').value;
 
-    if (searchTerm === '') {
-        renderGames(games); // Show all games if no search term is entered
-    } else {
-        const filteredGames = games.filter(game =>
-            game.title.toLowerCase().includes(searchTerm) ||
-            game.description.toLowerCase().includes(searchTerm)
-        );
+    let filteredGames = games.filter(game => {
+        const matchesSearch = game.title.toLowerCase().includes(query);
+        const matchesCategory = category === 'all' || game.category === category;
+        return matchesSearch && matchesCategory;
+    });
 
-        renderGames(filteredGames); // Render filtered games
-    }
-}
-
-// Clear search functionality
-function clearSearch() {
-    searchInput.value = ''; // Clear the search input field
-    renderGames(games); // Show all games
-}
-
-// Add event listeners
-searchButton.addEventListener('click', searchGames);
-searchInput.addEventListener('keyup', (event) => {
-    if (event.key === 'Enter') {
-        searchGames();
-    }
+    displayGames(filteredGames);
 });
 
-// Clear search when the "Clear" button is clicked
-clearSearchButton.addEventListener('click', clearSearch);
+// Clear search and reset filters
+document.getElementById('clearSearchButton').addEventListener('click', () => {
+    document.getElementById('searchInput').value = '';
+    document.getElementById('categorySelect').value = 'all';
+    displayGames(games);
+});
 
-// Initial render
-renderGames();
+// Category filter change
+document.getElementById('categorySelect').addEventListener('change', () => {
+    const query = document.getElementById('searchInput').value.toLowerCase();
+    const category = document.getElementById('categorySelect').value;
+
+    let filteredGames = games.filter(game => {
+        const matchesSearch = game.title.toLowerCase().includes(query);
+        const matchesCategory = category === 'all' || game.category === category;
+        return matchesSearch && matchesCategory;
+    });
+
+    displayGames(filteredGames);
+});
+
+// Initial display of all games
+displayGames(games);
