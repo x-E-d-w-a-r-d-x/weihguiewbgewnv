@@ -71,6 +71,18 @@ const games = [
         description: 'Start clicking that cookie and take over the world!',
         thumbnail: 'games/CookieClicker/thumbnail.png',
         link: 'games/CookieClicker/index.html'
+    },
+    {
+        title: 'Fruit Ninja',
+        description: 'Slice and dice some food!',
+        thumbnail: 'games/FruitNinja/thumbnail.png',
+        link: 'games/FruitNinja/index.html'
+    },
+    {
+        title: 'Flappy Bird',
+        description: 'Fly though the pipes and get to score 99 to win.',
+        thumbnail: 'games/FlappyBird/thumbnail.png',
+        link: 'games/FlappyBird/index.html'
     }
 ];
 
