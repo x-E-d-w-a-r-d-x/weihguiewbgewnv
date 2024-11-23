@@ -4,21 +4,8 @@ const searchInput = document.getElementById('searchInput');
 const searchButton = document.getElementById('searchButton');
 const clearSearchButton = document.getElementById('clearSearchButton');
 
-// Debug: Check if elements are loaded
-if (!gamesList) {
-    console.error('Error: .games-list element not found!');
-} else {
-    console.log('.games-list element found successfully.');
-}
+// List of games (keep your game list as is)
 
-if (!searchInput || !searchButton || !clearSearchButton) {
-    console.error('Error: Search bar elements not found!');
-} else {
-    console.log('Search bar elements found successfully.');
-}
-
-
-// List of games
 const games = [
     {
         title: 'Slope',
@@ -52,7 +39,7 @@ const games = [
     },
     {
         title: 'House Of Hazards',
-        description: 'Dodge your friends or NPCs as you complete tasks to win the game!',
+        description: 'Dodge your friends or npcs as you complete tasks to win the game!',
         thumbnail: 'games/HouseOfHazards/thumbnail.png',
         link: 'games/HouseOfHazards/index.html'
     },
@@ -85,14 +72,10 @@ const games = [
         description: 'Start clicking that cookie and take over the world!',
         thumbnail: 'games/CookieClicker/thumbnail.png',
         link: 'games/CookieClicker/index.html'
-    },
+    }
 ];
 
-// State for pagination
-const gamesPerPage = 6;
-let currentPage = 1;
-
-// Render games dynamically with pagination
+// Render games dynamically
 function renderGames(gameList = games) {
     gamesList.innerHTML = ''; // Clear the game list
 
@@ -101,12 +84,7 @@ function renderGames(gameList = games) {
         return;
     }
 
-    // Pagination logic
-    const start = (currentPage - 1) * gamesPerPage;
-    const end = start + gamesPerPage;
-    const paginatedGames = gameList.slice(start, end);
-
-    paginatedGames.forEach(game => {
+    gameList.forEach(game => {
         const gameItem = document.createElement('div');
         gameItem.classList.add('game-item');
         gameItem.innerHTML = `
@@ -117,36 +95,31 @@ function renderGames(gameList = games) {
         `;
         gamesList.appendChild(gameItem);
     });
-
-    // Optionally, add pagination controls here...
 }
 
 // Search functionality
 function searchGames() {
     const searchTerm = searchInput.value.trim().toLowerCase();
-    console.log('Search term:', searchTerm); // Debugging: Check the search term
 
     if (searchTerm === '') {
-        // If the search bar is empty, show all games
-        renderGames(games);
+        renderGames(games); // Show all games if no search term is entered
     } else {
         const filteredGames = games.filter(game =>
             game.title.toLowerCase().includes(searchTerm) ||
             game.description.toLowerCase().includes(searchTerm)
         );
-        console.log('Filtered games:', filteredGames); // Debugging: Check filtered games
 
         renderGames(filteredGames); // Render filtered games
     }
 }
 
-// Clear Search functionality
+// Clear search functionality
 function clearSearch() {
-    searchInput.value = ''; // Clear the search input
+    searchInput.value = ''; // Clear the search input field
     renderGames(games); // Show all games
 }
 
-// Add event listeners for search
+// Add event listeners
 searchButton.addEventListener('click', searchGames);
 searchInput.addEventListener('keyup', (event) => {
     if (event.key === 'Enter') {
@@ -157,5 +130,5 @@ searchInput.addEventListener('keyup', (event) => {
 // Clear search when the "Clear" button is clicked
 clearSearchButton.addEventListener('click', clearSearch);
 
-// Initial Render
+// Initial render
 renderGames();
