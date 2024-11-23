@@ -126,11 +126,6 @@ searchInput.addEventListener('keyup', (event) => {
     }
 });
 
-document.getElementById('sortByTitle').addEventListener('click', () => {
-    const sortedGames = [...games].sort((a, b) => a.title.localeCompare(b.title));
-    renderGames(sortedGames);
-});
-
 // Clear search when the "Clear" button is clicked
 clearSearchButton.addEventListener('click', clearSearch);
 
