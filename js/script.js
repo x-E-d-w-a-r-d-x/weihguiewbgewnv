@@ -1,13 +1,19 @@
+// Grab the required DOM elements
 const gamesList = document.querySelector('.games-list');
-// Search Functionality
 const searchInput = document.getElementById('searchInput');
 const searchButton = document.getElementById('searchButton');
 
-// Debug: Check if the games-list exists
+// Debug: Check if elements are loaded
 if (!gamesList) {
     console.error('Error: .games-list element not found!');
 } else {
     console.log('.games-list element found successfully.');
+}
+
+if (!searchInput || !searchButton) {
+    console.error('Error: Search bar elements not found!');
+} else {
+    console.log('Search bar elements found successfully.');
 }
 
 // List of games
@@ -80,9 +86,9 @@ const games = [
     },
 ];
 
-// Update renderGames to accept a game list parameter
+// Render games dynamically
 function renderGames(gameList = games) {
-    gamesList.innerHTML = '';
+    gamesList.innerHTML = ''; // Clear the game list
     gameList.forEach(game => {
         const gameItem = document.createElement('div');
         gameItem.classList.add('game-item');
@@ -96,18 +102,23 @@ function renderGames(gameList = games) {
     });
 }
 
-// Filter games by search term
+// Search Functionality
 function searchGames() {
     const searchTerm = searchInput.value.toLowerCase();
     const filteredGames = games.filter(game =>
-        game.title.toLowerCase().includes(searchTerm) || game.description.toLowerCase().includes(searchTerm)
+        game.title.toLowerCase().includes(searchTerm) ||
+        game.description.toLowerCase().includes(searchTerm)
     );
 
-    // Render only the filtered games
+    // Debug: Log filtered results
+    console.log(`Search Term: ${searchTerm}`);
+    console.log(`Filtered Games:`, filteredGames);
+
+    // Render filtered games
     renderGames(filteredGames);
 }
 
-// Add event listener for search
+// Add event listeners for search
 searchButton.addEventListener('click', searchGames);
 searchInput.addEventListener('keyup', (event) => {
     if (event.key === 'Enter') {
