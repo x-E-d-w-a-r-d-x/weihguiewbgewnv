@@ -69,6 +69,12 @@ const games = [
         thumbnail: 'games/RetroBowl/thumbnail.png',
         link: 'games/RetroBowl/index.html'
     },
+    {
+        title: 'Cookie Clicker',
+        description: 'start clicking that cookie and take over the world!',
+        thumbnail: 'games/CookieClicker/thumbnail.png',
+        link: 'games/CookieClicker/index.html'
+    },
 ];
 
 // Render games dynamically
