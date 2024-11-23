@@ -135,10 +135,12 @@ function clearSearch() {
 }
 
 // Add event listeners
-searchButton.addEventListener('click', searchGames);
+searchButton.addEventListener('click', function () {
+    searchGames(); // Call searchGames when the button is clicked
+});
 searchInput.addEventListener('keyup', (event) => {
     if (event.key === 'Enter') {
-        searchGames();
+        searchGames(); // Call searchGames when the Enter key is pressed
     }
 });
 
