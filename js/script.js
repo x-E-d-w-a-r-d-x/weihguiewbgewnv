@@ -1,10 +1,4 @@
-// Grab the required DOM elements
-const gamesList = document.querySelector('.games-list');
-const searchInput = document.getElementById('searchInput');
-const searchButton = document.getElementById('searchButton');
-const clearSearchButton = document.getElementById('clearSearchButton');
-
-// List of games (keep your game list as is)
+// List of games
 const games = [
     {
         title: 'Slope',
@@ -38,7 +32,7 @@ const games = [
     },
     {
         title: 'House Of Hazards',
-        description: 'Dodge your friends or npcs as you complete tasks to win the game!',
+        description: 'Dodge your friends or NPCs as you complete tasks to win the game!',
         thumbnail: 'games/HouseOfHazards/thumbnail.png',
         link: 'games/HouseOfHazards/index.html'
     },
@@ -62,7 +56,7 @@ const games = [
     },
     {
         title: 'Retro Bowl',
-        description: 'Play some football with your favorite teams!',
+        description: 'Play some foot bowl with your favorite teams!',
         thumbnail: 'games/RetroBowl/thumbnail.png',
         link: 'games/RetroBowl/index.html'
     },
@@ -74,60 +68,60 @@ const games = [
     }
 ];
 
-// Render games dynamically
-function renderGames(gameList = games) {
-    gamesList.innerHTML = ''; // Clear the game list
+// Select the games list container
+const gamesListContainer = document.querySelector('.games-list');
 
-    if (gameList.length === 0) {
-        gamesList.innerHTML = '<div class="no-results-message">No results found.</div>';
+// Function to render the games
+function renderGames(filteredGames) {
+    gamesListContainer.innerHTML = '';
+
+    if (filteredGames.length === 0) {
+        gamesListContainer.innerHTML = '<p class="no-results-message">No games found</p>';
         return;
     }
 
-    gameList.forEach(game => {
+    filteredGames.forEach(game => {
         const gameItem = document.createElement('div');
         gameItem.classList.add('game-item');
+        
         gameItem.innerHTML = `
-            <img src="${game.thumbnail}" alt="${game.title} Thumbnail" loading="lazy">
+            <img src="${game.thumbnail}" alt="${game.title}">
             <h3>${game.title}</h3>
             <p>${game.description}</p>
-            <a href="${game.link}" target="_blank">Play Now</a>
+            <a href="${game.link}" target="_blank">Play Game</a>
         `;
-        gamesList.appendChild(gameItem);
+
+        gamesListContainer.appendChild(gameItem);
     });
 }
 
+// Render all games initially
+renderGames(games);
+
 // Search functionality
-function searchGames() {
-    const searchTerm = searchInput.value.trim().toLowerCase();
+const searchInput = document.getElementById('searchInput');
+const searchButton = document.getElementById('searchButton');
+const clearSearchButton = document.getElementById('clearSearchButton');
 
-    if (searchTerm === '') {
-        renderGames(games); // Show all games if no search term is entered
-    } else {
-        const filteredGames = games.filter(game =>
-            game.title.toLowerCase().includes(searchTerm) ||
-            game.description.toLowerCase().includes(searchTerm)
-        );
-
-        renderGames(filteredGames); // Render filtered games
-    }
-}
-
-// Clear search functionality
-function clearSearch() {
-    searchInput.value = ''; // Clear the search input field
-    renderGames(games); // Show all games
-}
-
-// Add event listeners
-searchButton.addEventListener('click', searchGames);
-searchInput.addEventListener('keyup', (event) => {
-    if (event.key === 'Enter') {
-        searchGames();
-    }
+// Handle search button click
+searchButton.addEventListener('click', () => {
+    const query = searchInput.value.toLowerCase();
+    const filteredGames = games.filter(game => 
+        game.title.toLowerCase().includes(query) ||
+        game.description.toLowerCase().includes(query)
+    );
+    renderGames(filteredGames);
 });
 
-// Clear search when the "Clear" button is clicked
-clearSearchButton.addEventListener('click', clearSearch);
+// Handle clear search button click
+clearSearchButton.addEventListener('click', () => {
+    searchInput.value = '';
+    renderGames(games);
+});
 
-// Initial render
-renderGames();
+// Handle enter key in search input
+searchInput.addEventListener('keydown', (e) => {
+    if (e.key === 'Enter') {
+        searchButton.click();
+    }
+});
