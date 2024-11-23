@@ -2,6 +2,7 @@
 const gamesList = document.querySelector('.games-list');
 const searchInput = document.getElementById('searchInput');
 const searchButton = document.getElementById('searchButton');
+const clearSearchButton = document.getElementById('clearSearchButton');
 
 // Debug: Check if elements are loaded
 if (!gamesList) {
@@ -10,11 +11,12 @@ if (!gamesList) {
     console.log('.games-list element found successfully.');
 }
 
-if (!searchInput || !searchButton) {
+if (!searchInput || !searchButton || !clearSearchButton) {
     console.error('Error: Search bar elements not found!');
 } else {
     console.log('Search bar elements found successfully.');
 }
+
 
 // List of games
 const games = [
@@ -86,10 +88,25 @@ const games = [
     },
 ];
 
-// Render games dynamically
+// State for pagination
+const gamesPerPage = 6;
+let currentPage = 1;
+
+// Render games dynamically with pagination
 function renderGames(gameList = games) {
     gamesList.innerHTML = ''; // Clear the game list
-    gameList.forEach(game => {
+
+    if (gameList.length === 0) {
+        gamesList.innerHTML = '<div class="no-results-message">No results found.</div>';
+        return;
+    }
+
+    // Pagination logic
+    const start = (currentPage - 1) * gamesPerPage;
+    const end = start + gamesPerPage;
+    const paginatedGames = gameList.slice(start, end);
+
+    paginatedGames.forEach(game => {
         const gameItem = document.createElement('div');
         gameItem.classList.add('game-item');
         gameItem.innerHTML = `
@@ -100,6 +117,8 @@ function renderGames(gameList = games) {
         `;
         gamesList.appendChild(gameItem);
     });
+
+    // Optionally, add pagination controls here...
 }
 
 // Search functionality
@@ -121,6 +140,12 @@ function searchGames() {
     }
 }
 
+// Clear Search functionality
+function clearSearch() {
+    searchInput.value = ''; // Clear the search input
+    renderGames(games); // Show all games
+}
+
 // Add event listeners for search
 searchButton.addEventListener('click', searchGames);
 searchInput.addEventListener('keyup', (event) => {
@@ -128,6 +153,9 @@ searchInput.addEventListener('keyup', (event) => {
         searchGames();
     }
 });
+
+// Clear search when the "Clear" button is clicked
+clearSearchButton.addEventListener('click', clearSearch);
 
 // Initial Render
 renderGames();

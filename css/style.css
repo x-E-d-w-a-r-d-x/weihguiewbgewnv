@@ -142,6 +142,42 @@ main {
     background: linear-gradient(135deg, #3700b3, #6200ea);
 }
 
+/* New styles for the "Clear Search" button */
+#clearSearchButton {
+    padding: 8px 12px;
+    background-color: #ff6666;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    margin-left: 10px;
+}
+
+#clearSearchButton:hover {
+    background-color: #ff3333;
+}
+
+/* Hover effect for game items */
+.game-item {
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    padding: 10px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.game-item:hover {
+    transform: scale(1.05);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+
+/* Styling the "No results found" message */
+.no-results-message {
+    text-align: center;
+    color: #999;
+    font-size: 18px;
+    font-weight: bold;
+}
+
 /* Footer */
 footer {
     text-align: center;
