@@ -1,9 +1,3 @@
-// Grab the required DOM elements
-const gamesList = document.querySelector('.games-list');
-const searchInput = document.getElementById('searchInput');
-const searchButton = document.getElementById('searchButton');
-const clearSearchButton = document.getElementById('clearSearchButton');
-
 // List of games (keep your game list as is)
 const games = [
     {
@@ -74,25 +68,30 @@ const games = [
     },
     {
         title: 'Boxing Random',
-        description: 'Fight your way up teh ranks or fight your freinds in boxing random!',
+        description: 'Fight your way up the ranks or fight your friends in boxing random!',
         thumbnail: 'games/BoxingRandom/thumbnail.png',
         link: 'games/BoxingRandom/index.html'
     },
     {
         title: 'Volley Random',
-        description: 'Chalange your freinds or famaly to a fun game of volleyball.',
+        description: 'Challenge your friends or family to a fun game of volleyball.',
         thumbnail: 'games/VolleyRandom/thumbnail.png',
         link: 'games/VolleyRandom/index.html'
     }
 ];
 
-// Sort games alphabetically by title
+// Grab the required DOM elements
+const gamesList = document.querySelector('.games-list');
+const searchInput = document.getElementById('searchInput');
+const searchButton = document.getElementById('searchButton');
+const clearSearchButton = document.getElementById('clearSearchButton');
+
+// Sort games alphabetically A-Z by title
 function sortGamesAZ() {
-    const sortedGames = [...games].sort((a, b) => a.title.localeCompare(b.title));
-    renderGames(sortedGames);
+    return [...games].sort((a, b) => a.title.localeCompare(b.title));
 }
 
-// Modify renderGames to optionally sort games before rendering
+// Render games dynamically
 function renderGames(gameList = games) {
     gamesList.innerHTML = ''; // Clear the game list
 
@@ -114,31 +113,25 @@ function renderGames(gameList = games) {
     });
 }
 
-// Add event listener for sorting
-document.addEventListener('DOMContentLoaded', () => {
-    sortGamesAZ(); // Automatically sort games alphabetically when the page loads
-});
-
 // Search functionality
 function searchGames() {
     const searchTerm = searchInput.value.trim().toLowerCase();
 
     if (searchTerm === '') {
-        renderGames(games); // Show all games if no search term is entered
+        renderGames(sortGamesAZ()); // Show all games if no search term is entered, but keep sorted
     } else {
         const filteredGames = games.filter(game =>
             game.title.toLowerCase().includes(searchTerm) ||
             game.description.toLowerCase().includes(searchTerm)
         );
-
-        renderGames(filteredGames); // Render filtered games
+        renderGames(sortGamesAZ(filteredGames)); // Render filtered and sorted games
     }
 }
 
 // Clear search functionality
 function clearSearch() {
     searchInput.value = ''; // Clear the search input field
-    renderGames(games); // Show all games
+    renderGames(sortGamesAZ()); // Show all games, sorted
 }
 
 // Add event listeners
@@ -152,5 +145,7 @@ searchInput.addEventListener('keyup', (event) => {
 // Clear search when the "Clear" button is clicked
 clearSearchButton.addEventListener('click', clearSearch);
 
-// Initial render
-renderGames();
+// Initial render: Sort and then render the games
+document.addEventListener('DOMContentLoaded', () => {
+    renderGames(sortGamesAZ()); // Automatically sort games alphabetically when the page loads
+});
