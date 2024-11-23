@@ -1,127 +1,146 @@
-// List of games
+// List of games with categories
 const games = [
     {
         title: 'Slope',
         description: 'Roll and dodge obstacles!',
         thumbnail: 'games/Slope/thumbnail.png',
-        link: 'games/Slope/index.html'
+        link: 'games/Slope/index.html',
+        category: 'arcade'
     },
     {
         title: 'OvO',
         description: 'Try and beat this impossible game!',
         thumbnail: 'games/OvO/thumbnail.png',
-        link: 'games/OvO/index.html'
+        link: 'games/OvO/index.html',
+        category: 'puzzle'
     },
     {
         title: 'Moto X3M',
         description: 'Fun game about motorcycles',
         thumbnail: 'games/MotoX3M/moto-x3m.png',
-        link: 'games/MotoX3M/index.html'
+        link: 'games/MotoX3M/index.html',
+        category: 'racing'
     },
     {
         title: 'Idle Breakout',
         description: 'An idle game where your goal is to break blocks that spawn in.',
         thumbnail: 'games/IdleBreakout/img/thumbnail.png',
-        link: 'games/IdleBreakout/index.html'
+        link: 'games/IdleBreakout/index.html',
+        category: 'idle'
     },
     {
         title: 'Sandtris',
         description: 'Tetris but with physics!',
         thumbnail: 'games/Sandtris/thumbnail.png',
-        link: 'games/Sandtris/index.html'
+        link: 'games/Sandtris/index.html',
+        category: 'puzzle'
     },
     {
         title: 'House Of Hazards',
         description: 'Dodge your friends or NPCs as you complete tasks to win the game!',
         thumbnail: 'games/HouseOfHazards/thumbnail.png',
-        link: 'games/HouseOfHazards/index.html'
+        link: 'games/HouseOfHazards/index.html',
+        category: 'arcade'
     },
     {
         title: 'Rooftop Snipers',
         description: 'Shoot the other person to win.',
         thumbnail: 'games/RooftopSnipers/thumbnail.png',
-        link: 'games/RooftopSnipers/index.html'
+        link: 'games/RooftopSnipers/index.html',
+        category: 'arcade'
     },
     {
         title: 'Basket Random',
         description: 'Play some basketball and shoot at some hoops.',
         thumbnail: 'games/BasketRandom/thumbnail.png',
-        link: 'games/BasketRandom/index.html'
+        link: 'games/BasketRandom/index.html',
+        category: 'sports'
     },
     {
         title: 'Soccer Random',
         description: 'Play some soccer and score some goals!',
         thumbnail: 'games/SoccerRandom/thumbnail.png',
-        link: 'games/SoccerRandom/index.html'
+        link: 'games/SoccerRandom/index.html',
+        category: 'sports'
     },
     {
         title: 'Retro Bowl',
         description: 'Play some foot bowl with your favorite teams!',
         thumbnail: 'games/RetroBowl/thumbnail.png',
-        link: 'games/RetroBowl/index.html'
+        link: 'games/RetroBowl/index.html',
+        category: 'sports'
     },
     {
         title: 'Cookie Clicker',
         description: 'Start clicking that cookie and take over the world!',
         thumbnail: 'games/CookieClicker/thumbnail.png',
-        link: 'games/CookieClicker/index.html'
+        link: 'games/CookieClicker/index.html',
+        category: 'idle'
     }
 ];
 
-// Select the games list container
-const gamesListContainer = document.querySelector('.games-list');
-
-// Function to render the games
-function renderGames(filteredGames) {
-    gamesListContainer.innerHTML = '';
-
-    if (filteredGames.length === 0) {
-        gamesListContainer.innerHTML = '<p class="no-results-message">No games found</p>';
-        return;
-    }
+// Function to display the games based on selected category and search query
+function displayGames(filteredGames) {
+    const gamesList = document.getElementById('gamesList');
+    gamesList.innerHTML = ''; // Clear the current list
 
     filteredGames.forEach(game => {
-        const gameItem = document.createElement('div');
-        gameItem.classList.add('game-item');
-        
-        gameItem.innerHTML = `
+        const gameElement = document.createElement('div');
+        gameElement.classList.add('game-item');
+
+        gameElement.innerHTML = `
             <img src="${game.thumbnail}" alt="${game.title}">
             <h3>${game.title}</h3>
             <p>${game.description}</p>
-            <a href="${game.link}" target="_blank">Play Game</a>
+            <a href="${game.link}">Play Now</a>
         `;
 
-        gamesListContainer.appendChild(gameItem);
+        gamesList.appendChild(gameElement);
     });
+
+    // Show "No results" if no games are found
+    if (filteredGames.length === 0) {
+        const noResultsMessage = document.createElement('div');
+        noResultsMessage.classList.add('no-results-message');
+        noResultsMessage.textContent = 'No games found.';
+        gamesList.appendChild(noResultsMessage);
+    }
 }
 
-// Render all games initially
-renderGames(games);
-
 // Search functionality
-const searchInput = document.getElementById('searchInput');
-const searchButton = document.getElementById('searchButton');
-const clearSearchButton = document.getElementById('clearSearchButton');
+document.getElementById('searchButton').addEventListener('click', () => {
+    const query = document.getElementById('searchInput').value.toLowerCase();
+    const category = document.getElementById('categorySelect').value;
 
-// Handle search button click
-searchButton.addEventListener('click', () => {
-    const query = searchInput.value.toLowerCase();
-    const filteredGames = games.filter(game => 
-        game.title.toLowerCase().includes(query) ||
-        game.description.toLowerCase().includes(query)
-    );
-    renderGames(filteredGames);
+    let filteredGames = games.filter(game => {
+        const matchesSearch = game.title.toLowerCase().includes(query);
+        const matchesCategory = category === 'all' || game.category === category;
+        return matchesSearch && matchesCategory;
+    });
+
+    displayGames(filteredGames);
 });
 
-// Handle clear search button click
-clearSearchButton.addEventListener('click', () => {
-    searchInput.value = '';
-    renderGames(games);
+// Clear search and reset filters
+document.getElementById('clearSearchButton').addEventListener('click', () => {
+    document.getElementById('searchInput').value = '';
+    document.getElementById('categorySelect').value = 'all';
+    displayGames(games);
 });
 
-// Handle enter key in search input
-searchInput.addEventListener('keydown', (e) => {
-    if (e.key === 'Enter') {
-        searchButton.click();
-    }
+// Category filter change
+document.getElementById('categorySelect').addEventListener('change', () => {
+    const query = document.getElementById('searchInput').value.toLowerCase();
+    const category = document.getElementById('categorySelect').value;
+
+    let filteredGames = games.filter(game => {
+        const matchesSearch = game.title.toLowerCase().includes(query);
+        const matchesCategory = category === 'all' || game.category === category;
+        return matchesSearch && matchesCategory;
+    });
+
+    displayGames(filteredGames);
 });
+
+// Initial display of all games
+displayGames(games);
