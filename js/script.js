@@ -1,4 +1,10 @@
-// List of games
+// Grab the required DOM elements
+const gamesList = document.querySelector('.games-list');
+const searchInput = document.getElementById('searchInput');
+const searchButton = document.getElementById('searchButton');
+const clearSearchButton = document.getElementById('clearSearchButton');
+
+// List of games (keep your game list as is)
 const games = [
     {
         title: 'Slope',
@@ -32,7 +38,7 @@ const games = [
     },
     {
         title: 'House Of Hazards',
-        description: 'Dodge your friends or NPCs as you complete tasks to win the game!',
+        description: 'Dodge your friends or npcs as you complete tasks to win the game!',
         thumbnail: 'games/HouseOfHazards/thumbnail.png',
         link: 'games/HouseOfHazards/index.html'
     },
@@ -65,43 +71,63 @@ const games = [
         description: 'Start clicking that cookie and take over the world!',
         thumbnail: 'games/CookieClicker/thumbnail.png',
         link: 'games/CookieClicker/index.html'
-    },
+    }
 ];
 
-// Function to render the game items
-function renderGames(gamesToRender) {
-    const gameList = document.getElementById('gameList');
-    gameList.innerHTML = ''; // Clear current games
+// Render games dynamically
+function renderGames(gameList = games) {
+    gamesList.innerHTML = ''; // Clear the game list
 
-    if (gamesToRender.length === 0) {
-        gameList.innerHTML = '<p class="no-results-message">No results found</p>';
+    if (gameList.length === 0) {
+        gamesList.innerHTML = '<div class="no-results-message">No results found.</div>';
+        return;
+    }
+
+    gameList.forEach(game => {
+        const gameItem = document.createElement('div');
+        gameItem.classList.add('game-item');
+        gameItem.innerHTML = `
+            <img src="${game.thumbnail}" alt="${game.title} Thumbnail" loading="lazy">
+            <h3>${game.title}</h3>
+            <p>${game.description}</p>
+            <a href="${game.link}" target="_blank">Play Now</a>
+        `;
+        gamesList.appendChild(gameItem);
+    });
+}
+
+// Search functionality
+function searchGames() {
+    const searchTerm = searchInput.value.trim().toLowerCase();
+
+    if (searchTerm === '') {
+        renderGames(games); // Show all games if no search term is entered
     } else {
-        gamesToRender.forEach(game => {
-            const gameItem = document.createElement('div');
-            gameItem.classList.add('game-item');
-            gameItem.innerHTML = `
-                <img src="${game.thumbnail}" alt="${game.title}">
-                <h3>${game.title}</h3>
-                <p>${game.description}</p>
-                <a href="${game.link}" target="_blank">Play Game</a>
-            `;
-            gameList.appendChild(gameItem);
-        });
+        const filteredGames = games.filter(game =>
+            game.title.toLowerCase().includes(searchTerm) ||
+            game.description.toLowerCase().includes(searchTerm)
+        );
+
+        renderGames(filteredGames); // Render filtered games
     }
 }
 
+// Clear search functionality
+function clearSearch() {
+    searchInput.value = ''; // Clear the search input field
+    renderGames(games); // Show all games
+}
+
+// Add event listeners
+searchButton.addEventListener('click', searchGames);
+searchInput.addEventListener('keyup', (event) => {
+    if (event.key === 'Enter') {
+        searchGames();
+    }
+});
+
+// Clear search when the "Clear" button is clicked
+clearSearchButton.addEventListener('click', clearSearch);
+
 // Initial render
-renderGames(games);
-
-// Search functionality
-document.getElementById('searchButton').addEventListener('click', function () {
-    const searchTerm = document.getElementById('searchInput').value.toLowerCase();
-    const filteredGames = games.filter(game => game.title.toLowerCase().includes(searchTerm));
-    renderGames(filteredGames);
-});
-
-// Clear search input and display all games
-document.getElementById('clearSearchButton').addEventListener('click', function () {
-    document.getElementById('searchInput').value = '';
-    renderGames(games);
-});
+renderGames();

@@ -150,11 +150,21 @@ body {
 
     #searchInput {
         width: 100%;
-        margin-bottom: 10px;
     }
 
     #searchButton, #clearSearchButton {
         width: 100%;
+        margin-left: 0;
         margin-top: 10px;
+    }
+
+    .games-list {
+        grid-template-columns: 1fr 1fr; /* Two columns for smaller screens */
+    }
+}
+
+@media (max-width: 480px) {
+    .games-list {
+        grid-template-columns: 1fr; /* One column for very small screens */
     }
 }
