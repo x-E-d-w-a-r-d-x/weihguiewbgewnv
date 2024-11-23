@@ -141,32 +141,6 @@ body {
     grid-column: span 4;
 }
 
-/* Category dropdown styles */
-.category-container {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin-bottom: 20px;
-}
-
-.category-container label {
-    font-size: 18px;
-    margin-right: 10px;
-}
-
-.category-select {
-    padding: 12px 20px;
-    font-size: 16px;
-    border-radius: 50px;
-    border: 2px solid #ddd;
-    background-color: white;
-    cursor: pointer;
-}
-
-.category-select:focus {
-    border-color: #007bff;
-}
-
 /* For better alignment and responsiveness */
 @media (max-width: 768px) {
     .search-container {
@@ -176,21 +150,11 @@ body {
 
     #searchInput {
         width: 100%;
+        margin-bottom: 10px;
     }
 
     #searchButton, #clearSearchButton {
         width: 100%;
-        margin-left: 0;
         margin-top: 10px;
-    }
-
-    .games-list {
-        grid-template-columns: 1fr 1fr; /* Two columns for smaller screens */
-    }
-}
-
-@media (max-width: 480px) {
-    .games-list {
-        grid-template-columns: 1fr; /* One column for very small screens */
     }
 }

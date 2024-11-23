@@ -3,20 +3,22 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Game Library</title>
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <!-- Search Bar -->
+
+    <!-- Search container -->
     <div class="search-container">
         <input type="text" id="searchInput" placeholder="Search for a game...">
         <button id="searchButton">Search</button>
         <button id="clearSearchButton">Clear</button>
     </div>
 
-    <!-- Game Items List -->
-    <div class="games-list" id="gamesList">
-        <!-- Game items will be injected here by JavaScript -->
+    <!-- Game list container -->
+    <div id="gameList" class="games-list">
+        <!-- Game items will be added here dynamically -->
     </div>
 
     <script src="script.js"></script>
