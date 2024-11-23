@@ -126,6 +126,27 @@ searchInput.addEventListener('keyup', (event) => {
     }
 });
 
+document.getElementById('sortByTitle').addEventListener('click', () => {
+    const sortedGames = [...games].sort((a, b) => a.title.localeCompare(b.title));
+    renderGames(sortedGames);
+});
+
+// Add to game item
+const isFavorited = localStorage.getItem(game.title) ? '❤️' : '🤍';
+gameItem.innerHTML += `<button class="favorite-button">${isFavorited}</button>`;
+
+// Toggle favorite
+document.querySelector('.favorite-button').addEventListener('click', (e) => {
+    const gameTitle = e.target.parentElement.querySelector('h3').textContent;
+    if (localStorage.getItem(gameTitle)) {
+        localStorage.removeItem(gameTitle);
+        e.target.textContent = '🤍';
+    } else {
+        localStorage.setItem(gameTitle, 'true');
+        e.target.textContent = '❤️';
+    }
+});
+
 // Clear search when the "Clear" button is clicked
 clearSearchButton.addEventListener('click', clearSearch);
 
