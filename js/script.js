@@ -82,9 +82,6 @@ const games = [
 
 // Grab the required DOM elements
 const gamesList = document.querySelector('.games-list');
-const searchInput = document.getElementById('searchInput');
-const searchButton = document.getElementById('searchButton');
-const clearSearchButton = document.getElementById('clearSearchButton');
 
 // Sort games alphabetically A-Z by title
 function sortGamesAZ() {
@@ -112,40 +109,6 @@ function renderGames(gameList = games) {
         gamesList.appendChild(gameItem);
     });
 }
-
-// Search functionality
-function searchGames() {
-    const searchTerm = searchInput.value.trim().toLowerCase();
-
-    if (searchTerm === '') {
-        renderGames(sortGamesAZ()); // Show all games if no search term is entered, but keep sorted
-    } else {
-        const filteredGames = games.filter(game =>
-            game.title.toLowerCase().includes(searchTerm) ||
-            game.description.toLowerCase().includes(searchTerm)
-        );
-        renderGames(sortGamesAZ(filteredGames)); // Render filtered and sorted games
-    }
-}
-
-// Clear search functionality
-function clearSearch() {
-    searchInput.value = ''; // Clear the search input field
-    renderGames(sortGamesAZ()); // Show all games, sorted
-}
-
-// Add event listeners
-searchButton.addEventListener('click', function () {
-    searchGames(); // Call searchGames when the button is clicked
-});
-searchInput.addEventListener('keyup', (event) => {
-    if (event.key === 'Enter') {
-        searchGames(); // Call searchGames when the Enter key is pressed
-    }
-});
-
-// Clear search when the "Clear" button is clicked
-clearSearchButton.addEventListener('click', clearSearch);
 
 // Initial render: Sort and then render the games
 document.addEventListener('DOMContentLoaded', () => {
