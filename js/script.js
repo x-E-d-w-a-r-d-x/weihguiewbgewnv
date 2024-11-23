@@ -86,7 +86,13 @@ const games = [
     }
 ];
 
-// Render games dynamically
+// Sort games alphabetically by title
+function sortGamesAZ() {
+    const sortedGames = [...games].sort((a, b) => a.title.localeCompare(b.title));
+    renderGames(sortedGames);
+}
+
+// Modify renderGames to optionally sort games before rendering
 function renderGames(gameList = games) {
     gamesList.innerHTML = ''; // Clear the game list
 
@@ -107,6 +113,11 @@ function renderGames(gameList = games) {
         gamesList.appendChild(gameItem);
     });
 }
+
+// Add event listener for sorting
+document.addEventListener('DOMContentLoaded', () => {
+    sortGamesAZ(); // Automatically sort games alphabetically when the page loads
+});
 
 // Search functionality
 function searchGames() {
