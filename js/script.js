@@ -50,7 +50,7 @@ const games = [
     },
     {
         title: 'House Of Hazards',
-        description: 'Dodge your freinds or npcs as you complete tasks to win the game!',
+        description: 'Dodge your friends or NPCs as you complete tasks to win the game!',
         thumbnail: 'games/HouseOfHazards/thumbnail.png',
         link: 'games/HouseOfHazards/index.html'
     },
@@ -62,7 +62,7 @@ const games = [
     },
     {
         title: 'Basket Random',
-        description: 'Play some basket ball and shoot at some hoops.',
+        description: 'Play some basketball and shoot at some hoops.',
         thumbnail: 'games/BasketRandom/thumbnail.png',
         link: 'games/BasketRandom/index.html'
     },
@@ -74,13 +74,13 @@ const games = [
     },
     {
         title: 'Retro Bowl',
-        description: 'Play some foot bowl with your favorite teams!',
+        description: 'Play some football with your favorite teams!',
         thumbnail: 'games/RetroBowl/thumbnail.png',
         link: 'games/RetroBowl/index.html'
     },
     {
         title: 'Cookie Clicker',
-        description: 'start clicking that cookie and take over the world!',
+        description: 'Start clicking that cookie and take over the world!',
         thumbnail: 'games/CookieClicker/thumbnail.png',
         link: 'games/CookieClicker/index.html'
     },
@@ -102,20 +102,23 @@ function renderGames(gameList = games) {
     });
 }
 
-// Search Functionality
+// Search functionality
 function searchGames() {
-    const searchTerm = searchInput.value.toLowerCase();
-    const filteredGames = games.filter(game =>
-        game.title.toLowerCase().includes(searchTerm) ||
-        game.description.toLowerCase().includes(searchTerm)
-    );
+    const searchTerm = searchInput.value.trim().toLowerCase();
+    console.log('Search term:', searchTerm); // Debugging: Check the search term
 
-    // Debug: Log filtered results
-    console.log(`Search Term: ${searchTerm}`);
-    console.log(`Filtered Games:`, filteredGames);
+    if (searchTerm === '') {
+        // If the search bar is empty, show all games
+        renderGames(games);
+    } else {
+        const filteredGames = games.filter(game =>
+            game.title.toLowerCase().includes(searchTerm) ||
+            game.description.toLowerCase().includes(searchTerm)
+        );
+        console.log('Filtered games:', filteredGames); // Debugging: Check filtered games
 
-    // Render filtered games
-    renderGames(filteredGames);
+        renderGames(filteredGames); // Render filtered games
+    }
 }
 
 // Add event listeners for search
