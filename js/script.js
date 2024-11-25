@@ -37,12 +37,6 @@ const games = [
         link: 'games/HouseOfHazards/index.html'
     },
     {
-        title: 'Rooftop Snipers',
-        description: 'Shoot the other person to win.',
-        thumbnail: 'games/RooftopSnipers/thumbnail.png',
-        link: 'games/RooftopSnipers/index.html'
-    },
-    {
         title: 'Basket Random',
         description: 'Play some basketball and shoot at some hoops.',
         thumbnail: 'games/BasketRandom/thumbnail.png',
