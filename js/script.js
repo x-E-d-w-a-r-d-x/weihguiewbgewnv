@@ -1,11 +1,11 @@
 // List of games (keep your game list as is)
 const games = [
-    {
+    /*{
         title: 'Slope',
         description: 'Roll and dodge obstacles!',
         thumbnail: 'games/Slope/thumbnail.png',
         link: 'games/Slope/index.html'
-    },
+    },*/
     {
         title: 'OvO',
         description: 'Try and beat this impossible game!',
