@@ -1,4 +1,4 @@
-window.addEventListener('DOMContentLoaded', function() {
+/* window.addEventListener('DOMContentLoaded', function() {
     var adCircle = document.getElementById('ad-circle');
     var popup = document.getElementById('popup');
     var closeBtn = document.getElementById('close-btn');
